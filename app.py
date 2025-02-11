@@ -3,7 +3,6 @@ from data import administrator_skills, users, queries, match_results
 
 
 def is_admin(username):
-    """Check if the user is an admin."""
     for user in users:
         if user["username"] == username and user["role"] == "admin":
             return True
@@ -11,7 +10,6 @@ def is_admin(username):
 
 
 def add_skill(username, skill):
-    """Add a new skill (admin only)."""
     if is_admin(username):
         if skill not in administrator_skills:
             administrator_skills.append(skill)
@@ -23,7 +21,6 @@ def add_skill(username, skill):
 
 
 def update_skill(username, old_skill, new_skill):
-    """Update a skill (admin only)."""
     if is_admin(username):
         if old_skill in administrator_skills:
             index = administrator_skills.index(old_skill)
@@ -36,7 +33,6 @@ def update_skill(username, old_skill, new_skill):
 
 
 def delete_skill(username, skill):
-    """Delete a skill (admin only)."""
     if is_admin(username):
         if skill in administrator_skills:
             administrator_skills.remove(skill)
@@ -48,7 +44,6 @@ def delete_skill(username, skill):
 
 
 def match_skill(input_skill):
-    """Match input skill with the administrator's skills."""
     matched_skills = []
     for skill in administrator_skills:
         ratio = fuzz.partial_ratio(input_skill.lower(), skill.lower()) / 100  # Fuzzy match score
@@ -59,7 +54,6 @@ def match_skill(input_skill):
 
 
 def submit_query(user, input_skill):
-    """Submit a query for matching skills."""
     query = {"user": user, "input_skill": input_skill}
     queries.append(query)
 
@@ -76,7 +70,6 @@ def submit_query(user, input_skill):
 
 
 def show_results():
-    """Display all match results."""
     print("\nMatch Results:")
     for result in match_results:
         print(result)

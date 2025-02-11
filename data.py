@@ -28,7 +28,15 @@ queries = [
         "input_skill_name": "Machine learning",
         "created_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         "updated_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    }
+    },
+    {
+        "id": 3,
+        "user_id": 3,
+        "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        "input_skill_name": "Cloud Computing",
+        "created_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        "updated_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    },
 ]
 
 match_results = []
