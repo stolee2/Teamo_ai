@@ -1,22 +1,6 @@
 from fuzzywuzzy import fuzz
+from data import administrator_skills, users, queries, match_results
 
-# Data
-administrator_skills = [
-    'Python', 'relational database', 'Software engineering',
-    'data science', 'NLP', 'natural language processing'
-]
-
-users = [
-    {"id": 1, "username": "petar_mitev", "role": "user", "skills": ["Python", "relational database", "data science"]},
-    {"id": 2, "username": "mira_jovanovska", "role": "user", "skills": ["Java", "NLP", "data science"]},
-    {"id": 3, "username": "igor_iliev", "role": "user", "skills": ["C++", "data science", "relational database"]},
-    {"id": 4, "username": "stole_ristov", "role": "admin", "skills": []}
-]
-
-queries = []
-match_results = []
-
-# Functions
 
 def is_admin(username):
     """Check if the user is an admin."""
@@ -68,7 +52,7 @@ def match_skill(input_skill):
     matched_skills = []
     for skill in administrator_skills:
         ratio = fuzz.partial_ratio(input_skill.lower(), skill.lower()) / 100  # Fuzzy match score
-        if ratio >= 0.5:  # If match score is above 50%
+        if ratio >= 0.5: 
             matched_skills.append((skill, ratio))
     
     return matched_skills
@@ -97,7 +81,6 @@ def show_results():
     for result in match_results:
         print(result)
 
-# Main interaction
 def main():
     print("Welcome to Teamo AI Skill Matching System!\n")
     
